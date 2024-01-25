@@ -1,15 +1,17 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+//import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey:process.env.REACT_APP_API_KEY,
+  apiKey: "AIzaSyBbj9s7dU6Ew9LOclLSkWuSZ5FfvWM2QCo",
   authDomain: "authentication-tutorial-1dc2f.firebaseapp.com",
+  databaseURL: "https://authentication-tutorial-1dc2f-default-rtdb.firebaseio.com/",
   projectId: "authentication-tutorial-1dc2f",
   storageBucket: "authentication-tutorial-1dc2f.appspot.com",
   messagingSenderId: "391798808022",
   appId: "1:391798808022:web:b07c0a831d84df9a88d877",
-  measurementId: "G-2ENF8TS08Z",
+  measurementId: "G-2ENF8TS08Z"
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+// export const auth = app;
+export default app

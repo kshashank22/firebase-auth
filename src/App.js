@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword,onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "./firebase-config";
+import { createUserWithEmailAndPassword,getAuth,onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import  app  from "./firebase-config";
 import "./App.css";
+import DataPage from "./components/datapage/DataPage";
 
 function App() {
   const [registerDetails, setRegisterDetails] = useState({
@@ -11,9 +12,13 @@ function App() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const [user,setUser]=useState({})
 
-  onAuthStateChanged(auth,(currentUser)=>{
-    setUser(currentUser)
-  })
+  const auth=getAuth(app)
+
+  // onAuthStateChanged(auth,(currentUser)=>{
+  //   if(currentUser){
+  //     setUser(currentUser)
+  //   }
+  // })
 
   const registerChange = (e) => {
     setRegisterDetails({ ...registerDetails, [e.target.name]: e.target.value });
@@ -92,6 +97,7 @@ function App() {
         <button>Forgot Password</button>
         </form>
       </div>
+      <DataPage/>
     </div>
   );
 }
